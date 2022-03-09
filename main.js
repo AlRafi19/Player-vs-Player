@@ -161,8 +161,9 @@ resetElm.addEventListener('click', function(){
 
 ///__________________Final Work____________________
 
-// Added feature 
-// random LuckNumber Generate & Random number generate for Player 1 And Player 2  
+// Added features 
+// random LuckNumber Generate, Random number generate for Player 1 And Player 2
+// Result shows for each player and their required attempts to reach the Lucky Number  
 
 (function (){
     const formElm = document.querySelector('form')
@@ -183,6 +184,10 @@ resetElm.addEventListener('click', function(){
     let p1Trurn
     let p2Turn
     let gameOver
+    let countP1
+    let countP2
+    let eventInfo1
+    let eventInfo2
 
     // Generating Random Numbers
 
@@ -200,6 +205,8 @@ resetElm.addEventListener('click', function(){
         p1Trurn = true
         p2Turn = true
         gameOver = false
+        countP1 = 0
+        countP2 = 0
     }
     
     initialState()
@@ -213,9 +220,12 @@ resetElm.addEventListener('click', function(){
     
     initialView();
     
-    function winner(player){
+    function winner(player,eventInfo){
         gameOver = true
-        winnerElm.textContent = `${player} is Winner`
+        
+        winnerElm.textContent = `${player} is Winner at ${eventInfo} attempts`
+        winnerElm.style.color = 'wheat'
+      
         p1BtnElm.setAttribute('disabled', 'disabled')
         p2BtnElm.setAttribute('disabled', 'disabled')
     }
@@ -236,6 +246,8 @@ resetElm.addEventListener('click', function(){
     p1BtnElm.addEventListener('click', function(event){
         if (p1Trurn && luckyNumber  >=p1ClickValue && luckyNumber >=p2ClickValue){
             event.preventDefault()
+            //console.log(event.target);
+             eventInfo1 = ++countP1
            //p1ClickValue++
            p1ClickValue = Math.floor((Math.random() * luckyNumber) + 1)
             p1InputElm.textContent = p1ClickValue
@@ -249,7 +261,7 @@ resetElm.addEventListener('click', function(){
         }
         if (p1ClickValue >= luckyNumber){
           
-                winner('Player 1')
+                winner('Player 1',eventInfo1)
         }
     
     
@@ -259,6 +271,7 @@ resetElm.addEventListener('click', function(){
         if (p2Turn && luckyNumber >= p2ClickValue && luckyNumber >= p1ClickValue){
             event.preventDefault()
            // p2ClickValue++
+           eventInfo2 = ++countP2
            p2ClickValue = Math.floor((Math.random() * luckyNumber) + 1)
             p2InputElm.textContent = p2ClickValue
     
@@ -271,7 +284,7 @@ resetElm.addEventListener('click', function(){
         }
         if (p2ClickValue >= luckyNumber){
          
-            winner('Player 2')
+            winner('Player 2',eventInfo2)
     
         }
       

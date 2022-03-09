@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player VS Player</title>
     <style>
+        .body{
+            background-color: brown;
+            
+        }
         .container{
             margin-top: 5rem;
             text-align: center;
             margin-bottom: 2rem;
+            
         }
        .input{
            margin-bottom: 1rem;
@@ -18,18 +23,29 @@
        .button{
            margin-right: 100px;
        }
+       .first-player, .second-player{
+        color:rgba(217, 255, 0, 0.965);
+       }
+      
+       .luck-number, h1, p{
+           color: wheat;
+       }
+       .p1btn , .p2btn, .submit{
+           color: green;
+       }
+      
     </style>
 </head>
 <body class="body">
     <div class="container">
         <h1>Let's Play Luck Game</h1>
-        <h2 class="winner"></h2>
+        <h3 class="winner"></h3>
         <p class="luck-number">Lucky Number:<span>0</span></p>
         <p>Player-1: <span class="first-player">0</span> Player-2: <span class="second-player">0</span></p>
         <div class="input">
             <form>
-                <input type="number" class="lucky-number">
-                <input type="submit" value="Submit">
+                <input type="number" placeholder='Enter Your Number' class="lucky-number">
+                <input type="submit" value="Submit" class="submit">
                 <input type="button" value="Reset" class="reset">
             </form>
         </div>
