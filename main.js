@@ -223,7 +223,7 @@ resetElm.addEventListener('click', function(){
     function winner(player,eventInfo){
         gameOver = true
         
-        winnerElm.textContent = `${player} is Winner at ${eventInfo} attempts`
+        winnerElm.textContent = `${player} is Winner after ${eventInfo} attempt`
         winnerElm.style.color = 'wheat'
       
         p1BtnElm.setAttribute('disabled', 'disabled')
